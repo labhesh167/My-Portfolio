@@ -1,0 +1,462 @@
+/* ======================= */
+/* Root / Default Light Theme */
+/* ======================= */
+
+:root {
+  --bg-color:#f0ffea;
+  --text-color: #121212;
+  --highlight-color: #121212;
+  --navbar-bg: #cfe3f8;
+  --bg-color: #f3ffef;
+  --footer-bg: ;
+  --footer-text: #333;
+  --link-color: #121212;
+  --btn-bg: var(--text-color);
+  --btn-text: var(--bg-color);
+  --btn-border: var(--text-color);
+  --btn-hover-bg: var(--bg-color);
+  --btn-hover-text: var(--text-color);
+  --image-shadow: rgba(0, 0, 0, 0.15);
+}
+
+/* ======================= */
+/* Dark Theme overrides */
+/* ======================= */
+
+body.dark-theme {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --highlight-color: #fff;
+  --navbar-bg: #1f1f1f;
+  --footer-bg: #1f1f1f;
+  --footer-text: #ccc;
+  --link-color: #e0e0e0;
+  --btn-bg: var(--text-color);
+  --btn-text: var(--bg-color);
+  --btn-border: var(--text-color);
+  --btn-hover-bg: var(--bg-color);
+  --btn-hover-text: var(--text-color);
+  --image-shadow: rgba(255, 255, 255, 0.15);
+}
+
+/* ======================= */
+/* Body & General Styling */
+/* ======================= */
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* ======================= */
+/* Navbar */
+/* ======================= */
+
+.navbar {
+  background-color: var(--navbar-bg) !important;
+  transition: background-color 0.5s ease;
+}
+
+/* Navbar links */
+.nav-link {
+  color: var(--link-color);
+  transition: color 0.3s ease;
+}
+
+.dark-theme .nav-link:hover,
+.nav-link:hover {
+  color: var(--highlight-color);
+}
+
+/* ======================= */
+/* Footer */
+/* ======================= */
+
+.footer-section {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.footer-link {
+  color: var(--footer-text);
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: var(--highlight-color);
+}
+
+/* ======================= */
+/* Theme Toggle Button */
+/* ======================= */
+
+#themeToggle {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+/* Buttons */
+.btn-outline-secondary {
+  color: var(--btn-text);
+  border-color: #555; /* slightly muted for outline */
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-theme .btn-outline-secondary {
+  color: var(--btn-text);
+  border-color: #555;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #555;
+  border-color: #777;
+  color: var(--bg-color);
+}
+
+/* ======================= */
+/* Hero Section */
+/* ======================= */
+
+.hero-section {
+  min-height: 75vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.5s ease, color 0.5s ease;
+  display: flex;
+  align-items: center;
+  padding: 3rem 0;
+}
+
+.highlight {
+  color: var(--highlight-color);
+  font-weight: 700;
+}
+
+/* Animations */
+.hero-title,
+.hero-subtitle,
+.hero-btn,
+.hero-image img {
+  opacity: 0;
+  transform: translateY(20px);
+  animation-fill-mode: forwards;
+}
+
+.hero-title {
+  animation: fadeUp 0.7s ease forwards 0.2s;
+}
+
+.hero-subtitle {
+  animation: fadeUp 0.7s ease forwards 0.5s;
+}
+
+.hero-btn {
+  animation: fadeUp 0.7s ease forwards 0.8s;
+}
+
+.hero-image img {
+  animation: fadeUp 0.7s ease forwards 1s;
+  max-width: 280px;
+  max-height: 280px;
+  box-shadow: 0 4px 15px var(--image-shadow);
+  border-radius: 50%;
+  transition: box-shadow 0.5s ease;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive for hero */
+@media (max-width: 767.98px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-image img {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 1rem auto 0 auto;
+  }
+}
+
+/* ======================= */
+/* Buttons - Dark Mode Sync */
+/* ======================= */
+
+.btn-dark {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: 2px solid var(--btn-border);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-dark:hover,
+.btn-dark:focus {
+  background-color: var(--btn-hover-bg);
+  color: var(--btn-hover-text);
+  outline: none;
+}
+
+/* ======================= */
+/* Back To Top Button */
+/* ======================= */
+
+#backToTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  z-index: 99;
+  background-color: var(--btn-border);
+  color: var(--btn-text);
+  border: none;
+  outline: none;
+  font-size: 18px;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+#backToTopBtn:hover {
+  background-color: var(--btn-hover-bg);
+  color: var(--btn-hover-text);
+}
+
+
+
+/* About Section */
+
+.section-title {
+  font-weight: 700;
+  color: var(--hero-text, #121212);
+  border-bottom: 3px solid var(--hero-text, #121212);
+  display: inline-block;
+  padding-bottom: 0.3rem;
+  margin-bottom: 2rem;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  font-size: 2.5rem;
+  letter-spacing: 0.05em;
+}
+
+.about-text {
+  font-size: 1.15rem;
+  color: var(--hero-text, #121212);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards 0.3s;
+}
+
+.highlight {
+  color: var(--highlight-color, #007bff);
+  font-weight: 600;
+}
+
+.about-facts {
+  margin-top: 1.5rem;
+}
+
+/* Light theme badges */
+.about-fact {
+  background: var(--highlight-color, #007bff);
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.about-fact:hover {
+  background-color: var(--highlight-hover, #0056b3);
+  cursor: default;
+}
+
+.btn-outline-secondary {
+  color: var(--highlight-color, #007bff);
+  border-color: var(--highlight-color, #007bff);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 600;
+  padding: 0.55rem 1.5rem;
+  border-radius: 50px;
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--highlight-color, #007bff);
+  color: #fff;
+  border-color: var(--highlight-color, #007bff);
+}
+
+.quote {
+  color: var(--highlight-color, #007bff);
+  border-left: 4px solid var(--highlight-color, #007bff);
+  padding-left: 1rem;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards 0.5s;
+}
+
+.social-icons {
+  margin-top: 1.5rem;
+}
+
+.social-link {
+  color: var(--hero-text, #121212);
+  transition: color 0.3s ease;
+}
+
+.social-link:hover {
+  color: var(--highlight-color, #007bff);
+}
+
+
+/* Dark theme overrides */
+body.dark-theme .section-title {
+  color: var(--highlight-color, #66ccff);
+  border-color: var(--highlight-color, #66ccff);
+}
+
+body.dark-theme .about-text,
+body.dark-theme .hobbies {
+  color: var(--hero-text, #eee);
+}
+
+/* Dark theme overrides for about-fact badges */
+body.dark-theme .about-fact {
+  background: var(--highlight-color, #66ccff);
+  color: #121212; /* Darker text for contrast on lighter bg */
+  box-shadow: 0 2px 10px rgba(102, 204, 255, 0.6);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .about-fact:hover {
+  background-color: #99d6ff;
+  color: #121212;
+  cursor: default;
+}
+
+body.dark-theme .btn-outline-secondary {
+  color: var(--highlight-color, #66ccff);
+  border-color: var(--highlight-color, #66ccff);
+}
+
+body.dark-theme .btn-outline-secondary:hover {
+  background-color: var(--highlight-color, #66ccff);
+}
+
+body.dark-theme .quote {
+  color: var(--highlight-color, #66ccff);
+  border-color: var(--highlight-color, #66ccff);
+}
+
+body.dark-theme .social-link {
+  color: #eee;
+}
+
+body.dark-theme .social-link:hover {
+  color: var(--highlight-color, #66ccff);
+}
+
+/* Responsive */
+@media (max-width: 767.98px) {
+  .about-text, .quote, .hobbies {
+    text-align: center;
+  }
+  .about-facts {
+    justify-content: center;
+  }
+  .btn-outline-secondary {
+    display: block;
+    margin: 1.5rem auto 0;
+    width: 60%;
+  }
+  .social-icons {
+    justify-content: center;
+    display: flex;
+  }
+}
+
+/* Animations */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ======================= */
+
+
+/* Base card style */
+/* Light Theme Project Section */
+#projects {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.project-card {
+  background-color: #fadada;
+  color: #212529;
+  border: 1px solid #dee2e6;
+  border-radius: 1rem;
+  transition: transform 0.4s ease-in-out, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  transform-origin: center center;
+  position: relative;
+  z-index: 1;
+  will-change: transform;
+}
+/* Light Mode Hover Effect */
+body:not(.dark-theme) .project-card:hover {
+  background-color: #cee5f5;
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+
+/* Light Theme hover effect */
+.project-card:hover {
+  background-color: #cee5f5;
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+/* Dark Theme Section */
+body.dark-theme #projects {
+  background-color: #121212;
+  color: #e1e1e1;
+}
+
+/* Dark Theme Base */
+body.dark-theme .project-card {
+  background-color: #92f389;
+  color: #0c0909;
+  border-color: #333;
+}
+
+/* Dark Mode Hover Effect */
+body.dark-theme .project-card:hover {
+  background-color: #abf7a6;
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(255, 255, 255, 0.15);
+  z-index: 10;
+}
+/* ======================= */
+/* hover zoom effect  */
